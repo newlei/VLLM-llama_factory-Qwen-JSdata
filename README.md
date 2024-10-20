@@ -50,4 +50,18 @@ CUDA_VISIBLE_DEVICES=4 llamafactory-cli export examples/merge_lora/jsqwen_lora_m
 ```
 
 
+## api 批量推理
 
+```
+API_PORT=8000 CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/inference/jsqwen_lora.yaml 
+```
+启动 api 服务并运行以下示例程序进行调用：
+
+```
+# api_call_example.py
+from openai import OpenAI
+client = OpenAI(api_key="0",base_url="http://0.0.0.0:8000/v1")
+messages = [{"role": "user", "content": "Who are you?"}]
+result = client.chat.completions.create(messages=messages, model="../Qwen2.5-1.5B-Instruct")
+print(result.choices[0].message)
+```
