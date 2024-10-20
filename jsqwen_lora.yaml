@@ -1,0 +1,4 @@
+model_name_or_path: ../../Qwen2.5-1.5B-Instruct
+adapter_name_or_path: saves/qwen-1.5b/lora/pretrain
+template: qwen
+finetuning_type: lora
